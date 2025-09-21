@@ -2,7 +2,11 @@
 
 Simple stock tracker written on C.
 
-Currently you can run in terminal and manipulate in Terminal.
+You can run app in terminal, just compile and build with make.
+
+```bash
+make
+```
 
 ### Supported features
 
@@ -10,9 +14,9 @@ Currently you can run in terminal and manipulate in Terminal.
 - Get overall price for whole portfolio.
 - Look at all stocks.
 
-### Planned to add
+### Plan to add
 
 - State saving in file, loading and dumping the portfolio data.
 - Connection to public API-s for real price.
 
-Project made in educational purposes.
+Project made for educational purposes.
