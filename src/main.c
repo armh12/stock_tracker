@@ -3,12 +3,17 @@
 # include <stdbool.h>
 # include "portfolio.h"
 
+static void clean_input_buffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) { }
+}
+
 int main() {
     Stock *portfolio = NULL;
     int stock_count = 0;
     int capacity = 0;
 
-    int choice;
+    short choice;
     do {
         printf("Stock Portfolio Management\n");
         printf("Menu:\n");
@@ -16,9 +21,10 @@ int main() {
         printf("2. Remove Stock\n");
         printf("3. Display Portfolio\n");
         printf("4. Calculate Total Value\n");
-        printf("5. Exit\n");
+        printf("5. Modify stock\n");
+        printf("6. Exit\n");
         printf("Enter your choice: \n");
-        scanf("%d", &choice);
+        scanf("%hd", &choice);
 
         switch (choice) {
             case 1:
@@ -36,13 +42,18 @@ int main() {
                 break;
             }
             case 5:
+                modify_stock(&portfolio, &stock_count, NULL);
+                break;
+            case 6:
                 free_portfolio(&portfolio);
                 printf("Exiting program.\n");
                 return 0;
             default:
                 printf("Invalid choice. Please try again.\n");
+                clean_input_buffer();
+                break;
         };
-    } while (choice != 4);
+    } while (choice != 6);
 
     free(portfolio);
     portfolio = NULL;
