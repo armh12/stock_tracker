@@ -56,28 +56,28 @@ void add_stock(Stock **portfolio, int *count, int *capacity) {
     scanf(" %hd", &choice);
     switch (choice) {
         case 1:
-            modify_stock(portfolio, count, ticker);
+            modify_stock(*portfolio, *count, ticker);
             break;
         case 2:
             return;
     }
 }
 
-void modify_stock(Stock **portfolio, int *count, const char *ticker_to_change) {
-    if (*count == 0) {
+void modify_stock(Stock *portfolio, int count, const char *ticker_to_change) {
+    if (count == 0) {
         printf("Portfolio is empty, nothing to modify.\n");
         return;
     }
 
     char ticker[10];
-    if (ticker_to_change == NULL) {
+    if (!ticker_to_change) {
         printf("Enter ticker to modify: \n");
         scanf("%9s", ticker);
     }
     else {
         strcpy(ticker, ticker_to_change);
     }
-    int ticker_index = get_stock_index(*portfolio, *count, ticker);
+    int ticker_index = get_stock_index(portfolio, count, ticker);
 
     if (ticker_index == -1) {
         printf("Ticker does not exist in portfolio, nothing to modify.\n");
@@ -95,11 +95,11 @@ void modify_stock(Stock **portfolio, int *count, const char *ticker_to_change) {
         switch (choice) {
             case 1:
                 printf("Enter new quantity: \n");
-                scanf("%i", &(*portfolio)[ticker_index].quantity);
+                scanf("%i", &portfolio[ticker_index].quantity);
                 break;
             case 2:
                 printf("Enter new price: \n");
-                scanf("%lf", &(*portfolio)[ticker_index].price);
+                scanf("%lf", &portfolio[ticker_index].price);
                 break;
             case 3:
                 return;

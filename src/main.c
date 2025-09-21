@@ -42,7 +42,7 @@ int main() {
                 break;
             }
             case 5:
-                modify_stock(&portfolio, &stock_count, NULL);
+                modify_stock(portfolio, stock_count, NULL);
                 break;
             case 6:
                 free_portfolio(&portfolio);
