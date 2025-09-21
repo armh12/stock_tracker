@@ -17,7 +17,7 @@ int main() {
         printf("3. Display Portfolio\n");
         printf("4. Calculate Total Value\n");
         printf("5. Exit\n");
-        printf("Enter your choice: ");
+        printf("Enter your choice: \n");
         scanf("%d", &choice);
 
         switch (choice) {

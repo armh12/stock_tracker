@@ -23,7 +23,9 @@ void add_stock(Stock **portfolio, int *count, int *capacity) {
     scanf("%i", &current_portfolio[current_count].quantity);
     printf("Enter single price of stock: \n");
     scanf("%lf", &current_portfolio[current_count].price);
-    printf("Stock set successfully");
+    printf("Stock set successfully\n");
+
+    (*count)++;
 }
 
 
@@ -58,7 +60,6 @@ void remove_stock(Stock **portfolio, int *count) {
 }  
 
 void display_portfolio(const Stock *portfolio, int count) {
-    int portfolio_size = sizeof(*portfolio) / 
     printf("--- Your Portfolio (%d stocks) ---\n", count);
 
     if (count == 0) {
@@ -72,8 +73,8 @@ void display_portfolio(const Stock *portfolio, int count) {
         int quantity = portfolio[i].quantity;
         printf("\tStock quantity - %d\n", quantity);
         double single_stock_price = portfolio[i].price;
-        printf("\tSingle stock price - %lf", single_stock_price);
-        printf("\tOverall stocks price - %lf", single_stock_price * quantity);
+        printf("\tSingle stock price - %lf\n", single_stock_price);
+        printf("\tOverall stocks price - %lf\n", single_stock_price * quantity);
     }
 }
 
@@ -88,7 +89,7 @@ void free_portfolio(Stock **portfolio) {
 double calculate_total_value(const Stock *portfolio, int count) {
     double total_value = 0.0;
     for (int i = 0; i < count; i++) {
-        total_value += portfolio[i].price;
+        total_value += portfolio[i].price * portfolio[i].quantity;
     }
     return total_value;
 }
